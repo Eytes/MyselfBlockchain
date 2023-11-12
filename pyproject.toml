@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = {extras = ["all"], version = "^0.104.1"}
+pytest = "^7.4.3"
 
 
 [build-system]
