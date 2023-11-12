@@ -7,27 +7,34 @@ from pydantic import (
     Field,
 )
 
+from app.utils import (
+    get_hash,
+)
+
 
 class FirstBlock(BaseModel):
-    id: uuid.UUID = Field(default=uuid.uuid4())
+    index: int
     timestamp: float = Field(default=datetime.datetime.now().timestamp())
     previous_hash: None = None
     data: Any  # TODO: указать настоящий тип данных
 
 
 class Block(BaseModel):
-    id: uuid.UUID = Field(default=uuid.uuid4())
-    timestamp: float = Field(default=datetime.datetime.now().timestamp())
+    index: int
+    timestamp: float
     previous_hash: str
     hash: str
     data: Any  # TODO: указать настоящий тип данных
+    nonce: int
 
 
-class CreatedBlockUUID(BaseModel):
-    id: uuid.UUID
+class CreatedBlockIndex(BaseModel):
+    index: int
 
 
-class BlockCreateFields(BaseModel):
+class BlockCreateHashField(BaseModel):
+    index: int
+    timestamp: float
     previous_hash: str
-    hash: str
     data: Any  # TODO: указать настоящий тип данных
+    nonce: int

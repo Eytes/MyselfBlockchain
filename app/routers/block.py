@@ -6,7 +6,7 @@ from app.pydantic_models import (
 
 
 router = APIRouter(
-    prefix='api/block',
+    prefix='/api/block',
     tags=["Block"],
 )
 
@@ -14,4 +14,4 @@ router = APIRouter(
 @router.post(
     path='/create',
 )
-def create_block(block_details: block_model.BlockCreateFields) -> block_model.CreatedBlockUUID: ...
+def create_block(): ...

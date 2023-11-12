@@ -1,11 +1,7 @@
 import json
-import uuid
 
 from app.pydantic_models import (
     block as block_model,
-)
-from app.handlers import (
-    chain as chain_handlers,
 )
 
 
@@ -17,10 +13,11 @@ def get() -> block_model.Block: ...
 
 
 def create_first() -> block_model.FirstBlock:
-    first_block = block_model.FirstBlock(data="First block")
+    first_block = block_model.FirstBlock(
+        index=1,
+        data="First block",
+    )
     return first_block
 
 
-def create(block: block_model.BlockCreateFields) -> block_model.CreatedBlockUUID: ...
-
-
+def create() -> block_model.Block: ...

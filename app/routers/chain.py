@@ -6,7 +6,7 @@ from app.pydantic_models import (
 
 
 router = APIRouter(
-    prefix='api/chain',
+    prefix='/api/chain',
     tags=["Chain"],
 )
 
