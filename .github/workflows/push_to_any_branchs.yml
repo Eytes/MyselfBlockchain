@@ -4,10 +4,13 @@ on:
     branches-ignore:
       - dev
 jobs:
-  Run-tests:
+  run_tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Exctract branch name
+        run: echo "Branch name is ${GITHUB_REF#refs/heads/}"
+
+      - name: Get repository code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -15,14 +18,22 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Exctract branch name
-        run: echo "Branch name is ${GITHUB_REF#refs/heads/}"
-
-#      - run: apt update -y
-#      - run: apt upgrade -y
-
       - name: Show python version
         run: python3 --version
+
+      - name: Install pipx
+        run: |
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+
+      - name: Show pipx version
+        run: pipx --version
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Show poetry version
+        run: poetry --version
 
 #      - name: Install docker compose
 #        run: |
@@ -37,4 +48,13 @@ jobs:
 #
 #      - name: Show Docker version
 #        run: docker --version
+
+
+
+
+
+
+
+
+
 
