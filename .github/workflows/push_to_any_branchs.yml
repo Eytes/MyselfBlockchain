@@ -36,10 +36,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependecies
-        run: poetry install
+        run: poetry install --with test
 
       - name: Test application
-        run: poetry run pytest --with test
+        run: poetry run pytest
 
 #      - name: Install docker compose
 #        run: |
