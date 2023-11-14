@@ -10,9 +10,6 @@ jobs:
       - name: Exctract branch name
         run: echo "Branch name is ${GITHUB_REF#refs/heads/}"
 
-      - name: Get repository code
-        uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -34,6 +31,12 @@ jobs:
 
       - name: Show poetry version
         run: poetry --version
+
+      - name: Get repository code
+        uses: actions/checkout@v4
+
+      - name: Install dependecies
+        run: poetry install
 
 #      - name: Install docker compose
 #        run: |
