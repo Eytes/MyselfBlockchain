@@ -39,7 +39,7 @@ jobs:
         run: poetry install
 
       - name: Test application
-        run: poetry run pytest
+        run: poetry run pytest --with test
 
 #      - name: Install docker compose
 #        run: |
