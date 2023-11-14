@@ -29,11 +29,11 @@ jobs:
       - name: Show pipx version
         run: pipx --version
 
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Show poetry version
-        run: poetry --version
+#      - name: Install Poetry
+#        run: pipx install poetry
+#
+#      - name: Show poetry version
+#        run: poetry --version
 
 #      - name: Install docker compose
 #        run: |
