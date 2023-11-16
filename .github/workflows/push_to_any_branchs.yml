@@ -18,27 +18,21 @@ jobs:
       - name: Show python version
         run: python3 --version
 
-      - name: Install pipx
+      - name: Install Poetry
         run: |
           python3 -m pip install --user pipx
           python3 -m pipx ensurepath
-
-      - name: Show pipx version
-        run: pipx --version
-
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Show poetry version
-        run: poetry --version
+          pipx --version
+          pipx install poetry
+          poetry --version
 
       - name: Get repository code
         uses: actions/checkout@v4
 
-      - name: Install dependecies with pytest
+      - name: Install dependecies for testing
         run: poetry install --with test
 
-      - name: Test application with pytest
+      - name: Testing the application
         run: poetry run pytest
 
 # TODO: добавить сборку проекта в контейнер и тестирование контейнера
