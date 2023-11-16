@@ -1,0 +1,38 @@
+name: Push to any branch
+on:
+  push:
+    branches-ignore:
+      - dev
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exctract branch name
+        run: echo "Branch name is ${GITHUB_REF#refs/heads/}"
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Show python version
+        run: python3 --version
+
+      - name: Install Poetry
+        run: |
+          python3 -m pip install --user pipx
+          python3 -m pipx ensurepath
+          pipx --version
+          pipx install poetry
+          poetry --version
+
+      - name: Get repository code
+        uses: actions/checkout@v4
+
+      - name: Install dependecies for testing
+        run: poetry install --with test
+
+      - name: Testing the application
+        run: poetry run pytest
+
+# TODO: добавить сборку проекта в контейнер и тестирование контейнера
