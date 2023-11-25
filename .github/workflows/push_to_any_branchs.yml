@@ -58,8 +58,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v5
         with:
-          build-contexts: |
-            python=docker-image://python:3.11
+          context: app/
           push: true
           tags: my-blockchain:latest
 
