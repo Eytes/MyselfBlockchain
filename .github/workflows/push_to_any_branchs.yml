@@ -58,7 +58,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v5
         with:
-          context: app/
+          context: "{{defaultContext}}:app"
           push: true
           tags: my-blockchain:latest
 
