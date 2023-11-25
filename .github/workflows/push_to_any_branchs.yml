@@ -44,7 +44,7 @@ jobs:
   # TODO: добавить сборку проекта в контейнер и тестирование контейнера
   build_docker_container:
     runs-on: ubuntu-latest
-    needs: Container build
+    needs: run_tests
     steps:
       - name: Login to DockerHub
         uses: docker/login-action@v3
