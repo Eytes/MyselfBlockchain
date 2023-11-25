@@ -55,7 +55,7 @@ jobs:
       - name: Build and Push
         uses: docker/build-push-action@v3
         with:
-          build-context: python3.11
+          build-contexts: python3.11
           push: true
           tags: user/app:latest
 
